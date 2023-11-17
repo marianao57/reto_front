@@ -1,0 +1,31 @@
+label{
+    margin-bottom: 10px;
+}
+input{
+    padding: 10px;
+    border-radius: 30px;
+    background-color: transparent;
+    border: 2px solid #7e4ab6;
+    color: white;
+    width: 100%;
+}
+.container{
+    display: inline;
+}
+.btn{
+    padding: 8px;
+    border-radius: 20px;
+    margin-top: 10px;
+    color: #370578;
+    font-family: "Sulphur Point", sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+}
+.btn:hover{
+    transform: scale(1.05);
+}
+.container-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

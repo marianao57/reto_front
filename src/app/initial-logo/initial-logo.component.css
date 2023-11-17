@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  text-align: center;
+}
+.center {
+  display: inline;
+}
+img {
+  height: 4rem;
+}

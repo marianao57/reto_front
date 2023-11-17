@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="input-text.component.css" />
+
+<ng-container>
+  <div class="container animate__animated animate__fadeIn animate__delay-0.8s" style="display: {{display}};">
+    <div>
+      <label for="text">{{ text }}</label>
+    </div>
+    <div>
+      <input [(ngModel)]="inputValue" (input)="enableButton($event)" type="text" id="text" />
+    </div>
+    <div class="container-btn">
+      <div>
+        <button (click)="execute()" [disabled]="!inputEscribiendo" class="btn">Crear Partida</button>
+        <p style="display: {{ message }};">Nombre no válido</p>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background: radial-gradient(circle, #370578, #615578);
+  height: 700px;
+  overflow-y: hidden;
+  font-family: "Sulphur Point", sans-serif;
+  font-family: "Kanit", sans-serif;
+  color: white;
+}
