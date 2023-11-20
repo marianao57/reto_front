@@ -34,3 +34,6 @@
 .container-icon{
   display: inline;
 }
+.player-name{
+  text-align: center;
+}
