@@ -7,12 +7,11 @@
   </head>
   <body>
     <div class="content">
-      <initial-logo class="initial" style="display: {{ initial }};">
-      </initial-logo>
-
-      <div class="container-input">
+      <div class="container">
+        <initial-logo class="initial" style="display: {{ initial }};"></initial-logo>
         <app-input-text style="display: {{displayCreateGame}};"></app-input-text>
-        <app-input-player style="display: {{displayCreateUser}};"></app-input-player>
+        <app-input-player style="display: {{setDisplay('game_name')}};"></app-input-player>
+        <app-game-table style="display: {{setDisplay('player_name')}};"></app-game-table>
       </div>
     </div>
   </body>

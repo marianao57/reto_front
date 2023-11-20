@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ManageLocalStorageService } from './services/manage-local-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -8,20 +9,22 @@ import { Component } from '@angular/core';
 export class AppComponent {
   initial = 'block';
   displayCreateGame = 'none';
-  displayCreateUser = 'none';
+  data:Array<string> = [];
 
+  constructor(private manageLocalStorage: ManageLocalStorageService) {}
   ngOnInit() {
+    localStorage.clear();
     /* method to change the display of the main page, after 3 seconds */
     setTimeout(() => {
       (this.initial = 'none'), (this.displayCreateGame = 'block');
     }, 3000);
   }
 
-  setDisplay(): void {
-    if (this.displayCreateGame == 'none' && this.initial == 'none') {
-      this.displayCreateUser = 'block';
-    } else {
-      this.displayCreateUser = 'none';
+  setDisplay(key: string): string {
+    let display = 'none';
+    if (localStorage.getItem(key) !== null) {
+      display = 'block';
     }
+    return display;
   }
 }

@@ -1,14 +1,14 @@
 <link rel="stylesheet" href="initial-logo.component.css" />
 
+<div class="container animate__animated animate__pulse animate__infinite" style="display: {{isLoading}};">
   <ng-container *ngIf=isLoading == 'block'>
-    <div class="container animate__animated animate__pulse animate__infinite" style="display: {{isLoading}};">
-        <div class="center">
-          <div class="logo">
-            <img src="../assets/pragma_logo.png" alt="" />
-          </div>
-          <div class="name-company">
-            <img src="../assets/pragma.png" alt="" />
-          </div>
-        </div>
+    <div class="center">
+      <div class="logo">
+        <img src="../assets/pragma_logo.png" alt="" />
+      </div>
+      <div class="name-company">
+        <img src="../assets/pragma.png" alt="" />
+      </div>
     </div>
   </ng-container>
+</div>
