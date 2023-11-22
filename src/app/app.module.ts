@@ -9,6 +9,10 @@ import { GameTableComponent } from './game-table/game-table.component';
 import { HeaderComponent } from './header/header.component';
 import { IconPlayerComponent } from './icon-player/icon-player.component';
 import { PlayerNameComponent } from './player-name/player-name.component';
+import { CardComponent } from './card/card.component';
+import { IconPragmaComponent } from './icon-pragma/icon-pragma.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -16,12 +20,19 @@ import { PlayerNameComponent } from './player-name/player-name.component';
     InitialLogoComponent,
     InputTextComponent,
     InputPlayerComponent,
-    GameTableComponent,
     HeaderComponent,
     IconPlayerComponent,
     PlayerNameComponent,
+    CardComponent,
+    IconPragmaComponent,
+    GameTableComponent,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatGridListModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

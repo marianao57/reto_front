@@ -3,7 +3,9 @@
   justify-content: center;
   width: 50%;
 }
+
 .center {
+  text-align: center;
   border: 2px solid #c688ff;
   border-radius: 20px;
   box-shadow: 0 0 40px #c688ff;

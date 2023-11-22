@@ -1,7 +1,12 @@
 <link rel="stylesheet" href="input-text.component.css" />
 
 <ng-container>
-  <div class="container animate__animated animate__fadeIn animate__delay-0.8s" style="display: {{display}};">
+  <div style="display: {{display}};">
+  <div class="container-icon">
+    <app-icon-pragma></app-icon-pragma>
+    <p>Crear partida</p>
+  </div>
+  <div class="container animate__animated animate__fadeIn animate__delay-0.8s">
     <div class="center">
       <div>
         <label for="text">{{ text }}</label>
@@ -17,4 +22,5 @@
       </div>
     </div>
   </div>
+</div>
 </ng-container>

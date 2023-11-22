@@ -17,7 +17,7 @@ export class AppComponent {
     /* method to change the display of the main page, after 3 seconds */
     setTimeout(() => {
       (this.initial = 'none'), (this.displayCreateGame = 'block');
-    }, 3000);
+    }, 1000);
   }
 
   setDisplay(key: string): string {

@@ -1,0 +1,11 @@
+.card {
+  border: 1px solid #bb65ff;
+  width: 35px;
+  height: 60px;
+  border-radius: 7px;
+}
+.container {
+  display: inline;
+  align-items: center;
+  font-size: 14px;
+}

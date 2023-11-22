@@ -1,6 +1,10 @@
-.header-game{
-  display: flex;
-  justify-content: center;
+.content-game {
+  width: 90%;
+  position: absolute;
+  margin-top: 2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .container-big {
   display: flex;
@@ -8,14 +12,12 @@
   padding: 13px 3px 13px 3px;
   border: 2px solid #6429cd;
   border-radius: 120px;
-  width: 50%;
-  height: 15rem;
+  width: 100%;
+  height: 70%;
   position: absolute;
-  top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%);
 }
-.container {
+.medium-container {
   display: flex;
   justify-content: center;
   padding: 13px 3px 13px 3px;
@@ -31,9 +33,57 @@
   padding: 7px;
   width: 90%;
 }
-.container-icon{
-  display: inline;
+.container-name {
+  color: white;
+  margin-top: 0px;
 }
-.player-name{
+.icon-player {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.numbers-card{
+  position: fixed;
+}
+.numbers-card:hover{
+  background-color: #6a6a6e;
+  cursor: pointer;
+}
+.numbers-card:clic{
+  background-color: red;
+}
+.grid-cards-numbers{
+  width: 50%;
+  bottom: 0;
+}
+.btn{
+  width: 100%;
+  height: 100%;
+}
+.loader-img{
+  width: 80px;
+}
+.loader{
   text-align: center;
+  height: 100%;
+}
+.btn {
+  background-color: #6429CD;
+  padding: 5px;
+  border-radius: 20px;
+  margin-top: 30px;
+  color: white;
+  font-family: "Sulphur Point", sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  width: 50%;
+  border: none;
+}
+.btn:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.vote-btn{
+  display: flex;
+  justify-content: center;
 }
