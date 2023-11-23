@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ManageLocalStorageService } from '../services/manage-local-storage.service';
+import { ManageLocalStorageService } from '../../services/manage-local-storage.service';
 
 @Component({
   selector: 'app-player-name',

@@ -1,0 +1,23 @@
+<ng-container>
+  <div class="container-big">
+    <div class="medium-container">
+      <div class="center">
+        <div class="loader" style="display: {{ displayLoader }};">
+          <img class="loader-img" src="../assets/loader.gif" alt="" />
+          <p class="animate__animated animate__pulse animate__infinite">
+            Contando votos
+          </p>
+        </div>
+        <div class="vote-btn">
+          <button
+            class="btn animate__animated animate__fadeIn animate__delay-0.8s"
+            (click)="countVotesFunction()"
+            style="display: {{ changeDisplayButton() }};"
+          >
+            Revelar cartas
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

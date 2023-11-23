@@ -1,0 +1,31 @@
+.content-game {
+  width: 90%;
+  position: absolute;
+  margin-top: 2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.container-name {
+  color: white;
+  margin-top: 0px;
+}
+.icon-player {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.numbers-card{
+  position: fixed;
+}
+.numbers-card:hover{
+  background-color: #6a6a6e;
+  cursor: pointer;
+}
+.numbers-card:clic{
+  background-color: red;
+}
+.grid-cards-numbers{
+  width: 50%;
+  bottom: 0;
+}
