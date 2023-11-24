@@ -14,6 +14,7 @@ import { IconPragmaComponent } from './components/icon-pragma/icon-pragma.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { ContainerTripleComponent } from './components/container-triple/container-triple.component';
+import { VotesComponent } from './components/votes/votes.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ContainerTripleComponent } from './components/container-triple/containe
     IconPragmaComponent,
     GameTableComponent,
     ContainerTripleComponent,
+    VotesComponent,
   ],
   imports: [
     BrowserModule,

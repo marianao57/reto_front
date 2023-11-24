@@ -15,17 +15,23 @@
   bottom: 0;
   width: 100%;
 }
-.numbers-card{
+.numbers-card {
   position: fixed;
 }
-.numbers-card:hover{
+.numbers-card:hover {
   background-color: #6a6a6e;
   cursor: pointer;
 }
-.numbers-card:clic{
+.numbers-card:clic {
   background-color: red;
 }
-.grid-cards-numbers{
+.grid-cards-numbers {
   width: 50%;
   bottom: 0;
+}
+.text-card {
+  font-size: 25px;
+}
+.card_player {
+  text-align: center;
 }

@@ -8,6 +8,7 @@ import { ManageLocalStorageService } from '../../services/manage-local-storage.s
 })
 export class PlayerNameComponent {
   constructor(private manageLocalStorage: ManageLocalStorageService) {}
+  
   execute(): string {
     let name = this.manageLocalStorage.data['player_name'];
     return name;

@@ -5,15 +5,17 @@ import { ManageLocalStorageService } from './manage-local-storage.service';
   providedIn: 'root',
 })
 export class PlayersService {
+  nameMainPlayer: string = this.manageLocalStorage.getData('player_name');
   players: Array<string> = [
     'Jose',
     'Camila',
     'Laura',
     'Manuel',
+    '',
     'Fernando',
     'Samuel',
+    this.nameMainPlayer,
     'Monica',
-    this.addPlayer(),
   ];
   numbers = this.fillArrayNumbers();
 
@@ -30,10 +32,5 @@ export class PlayersService {
       }
     }
     return numbers;
-  }
-
-  addPlayer(): string {
-    let name = this.manageLocalStorage.data['player_name'];
-    return name;
   }
 }

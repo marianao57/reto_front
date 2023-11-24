@@ -2,7 +2,7 @@
 <ng-container>
   <header
     class="animate__animated animate__fadeIn animate__delay-0.8s"
-    style="display: {{ displayCards }};"
+    style="display: {{ displayCardsPlayers }};"
   >
     <app-header></app-header>
   </header>
@@ -11,43 +11,59 @@
     class="content-game animate__animated animate__fadeIn animate__delay-0.8s"
   >
     <mat-grid-list cols="3" rowWidth="2:1" rowHeight="2:1">
-      <div class="content-grid" *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8]">
-        <mat-grid-tile>
-          <div *ngIf="i === 4">
-            <app-container-triple></app-container-triple>
-          </div>
-          <div>
-            <div
-              class="card animate__animated animate__fadeIn animate__delay-0.8s"
-              style="display: {{ displayCards }};"
-            >
-              <app-card></app-card>
-              <p>{{ playersName[i] }}</p>
-            </div>
+      <div class="content-grid">
+        <mat-grid-tile *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8]">
+          <div
+            class="card animate__animated animate__fadeIn animate__delay-0.8s"
+          >
+            <ng-container *ngIf="i !== 4; else isFour">
+              <ng-container *ngIf="i !== 7; else isSeven">
+                <div name="card_players">
+                  <app-card> </app-card>
+                  <p class="votes">{{ numberAssingPlayers[i] }}</p>
+                  <p>{{ playersName[i] }}</p>
+                </div>
+              </ng-container>
+            </ng-container>
+            <ng-template #isSeven>
+              <div class="container-name">
+                <app-icon-player></app-icon-player>
+                <app-player-name></app-player-name>
+                <p style="display: {{ displayNumberMain }};">
+                  {{ numberMainPlayer }}
+                </p>
+              </div>
+            </ng-template>
+            <ng-template #isFour>
+              <div>
+                <app-container-triple></app-container-triple>
+              </div>
+            </ng-template>
           </div>
         </mat-grid-tile>
       </div>
     </mat-grid-list>
-    <div class="container-name">
-      <app-icon-player></app-icon-player>
-      <app-player-name></app-player-name>
-    </div>
     <div class="grid-cards-numbers">
       <mat-grid-list cols="9" rowHeight="1:1">
         <div
           class="animate__animated animate__fadeIn animate__delay-0.9s"
           *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8]"
-          style="display: {{ displayCards }};"
+          style="display: {{ displayOptions }};"
         >
+          <p class="text-card" *ngIf="i === 0">Elige una carta ☟</p>
           <mat-grid-tile>
+            <p id="number{{ i }}">{{ numbers[i] }}</p>
             <app-card
-              id="card_number"
               (click)="getNumber(i)"
               class="numbers-card"
+              id="card_number{{ i }}"
+              (click)="changeStyleCards(i)"
             >
             </app-card>
-            <p id="number">{{ numbers[i] }}</p>
           </mat-grid-tile>
+        </div>
+        <div style="display: {{ totalVotes }};">
+          <app-votes></app-votes>
         </div>
       </mat-grid-list>
     </div>

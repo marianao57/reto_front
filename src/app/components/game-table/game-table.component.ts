@@ -9,15 +9,20 @@ import { CountVotesService } from 'src/app/services/count-votes.service';
   styleUrls: ['./game-table.component.css'],
 })
 export class GameTableComponent {
-  displayCards: string = this.countVotes.displayCards;
+  col: number = 9;
+  displayCardsPlayers: string = 'none';
+  displayOptions: string = 'block';
   playersName: Array<String> = this.players.players;
   numbers: Array<Number> = this.players.numbers;
   numberAssingPlayers: Array<Number> = this.countVotes.numberAssingPlayers;
-  numberMainPlayer: number = this.countVotes.numberMainPlayer;
-  selectedCard: Array<Number> = this.countVotes.selectedCard;
+  numberMainPlayer: number = this.getNumberMain();
+  displayNumberMain: string = 'none';
+  selectedCard: Array<Number> = this.countVotes.numberAssingPlayers;
   votes: Array<Number> = this.countVotes.votes;
   text: string = '';
   displayLoader: string = this.countVotes.displayLoader;
+  totalVotes: string = 'none';
+  i: number = 0;
 
   constructor(
     public manageLocalStorage: ManageLocalStorageService,
@@ -33,21 +38,49 @@ export class GameTableComponent {
     this.playersName.push(this.manageLocalStorage.data['player_name']);
     /* method to change the display of the main page, after 3 seconds */
     setTimeout(() => {
-      (this.displayCards = 'none'), (this.displayCards = 'block');
+      (this.displayCardsPlayers = 'none'), (this.displayCardsPlayers = 'block');
     }, 1000);
   }
+
   getNumber(position: number): void {
     this.countVotes.getNumber(position);
+    for (let i = 0; i < this.selectedCard.length; i++) {
+      this.changeVote(i);
+    }
+    this.displayCardsPlayers = 'none';
+    this.displayOptions = 'block';
+    setTimeout(() => {
+      (this.displayCardsPlayers = 'none'),
+        ((this.totalVotes = 'block'),
+        (this.displayCardsPlayers = 'block'),
+        (this.displayOptions = 'none'),
+        (this.displayNumberMain = 'block'));
+    }, 2000);
+    this.numberMainPlayer = this.getNumberMain();
   }
 
-  changeStyleCards(): void {
-    let div = document.getElementById('card_number');
+  changeVote(position: number): void {
+    let p: any = document.getElementById('selected_card');
+    if (p) {
+      p.textContent = this.selectedCard[position];
+    }
+  }
+
+  changeStyleCards(i: number): void {
+    let div = document.getElementById('card_number' + i);
+    let text: any = '';
+    text = document.getElementById('text' + i);
+
     if (div) {
-      div.style.backgroundColor = 'blue';
-      div.style.color = 'white';
-      div.style.padding = '10px';
-      div.style.borderRadius = '35px';
+      div.style.backgroundColor = '#e4a4ff';
+      div.style.borderRadius = '7px';
+      div.style.width = '35px';
       div.style.height = '60px';
     }
+  }
+
+  getNumberMain(): number {
+    let n = this.countVotes.numberMainPlayer;
+    return n;
   }
 }

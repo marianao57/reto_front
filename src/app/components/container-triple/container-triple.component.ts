@@ -14,6 +14,10 @@ export class ContainerTripleComponent {
     this.displayLoader = 'block';
     this.countVotes.countVotes();
     this.countVotes.numberMainPlayer = 0;
+
+    setTimeout(() => {
+      this.displayLoader = 'none';
+    }, 3000);
   }
 
   changeDisplayButton(): string {
@@ -21,5 +25,16 @@ export class ContainerTripleComponent {
       return 'block';
     }
     return 'none';
+  }
+  changeStyleCardsPlayers(): void {
+    let divs = document.getElementsByName('card_players');
+    if (divs) {
+      divs.forEach((div: HTMLElement) => {
+        div.style.backgroundColor = '#e4a4ff';
+        div.style.borderRadius = '7px';
+        div.style.width = '35px';
+        div.style.height = '60px';
+      });
+    }
   }
 }
