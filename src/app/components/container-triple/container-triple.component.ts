@@ -8,24 +8,26 @@ import { CountVotesService } from 'src/app/services/count-votes.service';
 })
 export class ContainerTripleComponent {
   displayLoader: string = 'none';
+
   constructor(private countVotes: CountVotesService) {}
+  ngOnInit() {
+    this.countVotes.changeDisplayButton(false);
+    this.countVotes.hideVotes(false);
+  }
 
   countVotesFunction(): void {
+  
+    this.countVotes.changeDisplayButton(false);
     this.displayLoader = 'block';
     this.countVotes.countVotes();
-    this.countVotes.numberMainPlayer = 0;
-
     setTimeout(() => {
-      this.displayLoader = 'none';
-    }, 3000);
+      (this.displayLoader = 'none'),
+        (this.countVotes.hideVotes(true),
+        this.countVotes.changeDisplayOptions(false),
+        this.countVotes.changeDisplayTotalVotes(true));
+    }, 2000);
   }
 
-  changeDisplayButton(): string {
-    if (this.countVotes.numberMainPlayer != 0) {
-      return 'block';
-    }
-    return 'none';
-  }
   changeStyleCardsPlayers(): void {
     let divs = document.getElementsByName('card_players');
     if (divs) {

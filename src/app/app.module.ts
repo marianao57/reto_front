@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { ContainerTripleComponent } from './components/container-triple/container-triple.component';
 import { VotesComponent } from './components/votes/votes.component';
+import { InviteComponent } from './components/invite/invite.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -30,12 +32,14 @@ import { VotesComponent } from './components/votes/votes.component';
     GameTableComponent,
     ContainerTripleComponent,
     VotesComponent,
+    InviteComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
     MatGridListModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent],

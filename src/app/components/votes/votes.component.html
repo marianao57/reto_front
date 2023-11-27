@@ -1,10 +1,13 @@
 <ng-container>
-  <div class="grid-cards-numbers">
+  <div class="grid-cards-numbers" style="display: {{ displaySelectedCards }};" >
     <mat-grid-list cols="{{ size.length }}" rowHeight="1:1">
       <div *ngFor="let i of size">
         <mat-grid-tile>
-          <p>{{ votes[i] }}</p>
-          <app-card></app-card>
+          <div>
+            <p>{{ selectedCards[i] }}</p>
+            <app-card></app-card>
+            <p>{{ votes[i] }}</p>
+          </div>
         </mat-grid-tile>
       </div>
     </mat-grid-list>

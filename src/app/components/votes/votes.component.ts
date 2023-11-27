@@ -7,19 +7,21 @@ import { CountVotesService } from 'src/app/services/count-votes.service';
   styleUrls: ['./votes.component.css'],
 })
 export class VotesComponent {
-  selectedCards: Array<any> = this.getCards();
-  size: Array<number> = Array.from(
-    { length: this.countVotes.votes.length },
-    (_, index) => index
-  );
+  selectedCards: any = 0;
   displaySelectedCards: string = 'none';
-  votes:any = this.countVotes.votes
+  votes: any = 0;
+  size:any = 0
 
   constructor(private countVotes: CountVotesService) {}
-
-  getCards(): any {
-    this.selectedCards = this.countVotes.selectedCard;
-    return this.selectedCards;
+  ngOnInit() {
+    this.execute();
   }
+  execute(): void {
+    this.countVotes.countVotes()
+    this.selectedCards = this.countVotes.selectedCard;
+    this.votes = this.countVotes.votes;
+    this.size= Array.from(Array(this.votes.length-1).keys());
+    this.displaySelectedCards = 'block';
 
+  }
 }

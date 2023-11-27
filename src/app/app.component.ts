@@ -9,8 +9,8 @@ import { ManageLocalStorageService } from './services/manage-local-storage.servi
 export class AppComponent {
   initial = 'block';
   displayCreateGame = 'none';
-  data:Array<string> = [];
-
+  data: Array<string> = [];
+  displayInivite: string = 'none';
   constructor(private manageLocalStorage: ManageLocalStorageService) {}
   ngOnInit() {
     localStorage.clear();

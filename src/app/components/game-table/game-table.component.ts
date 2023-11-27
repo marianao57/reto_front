@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ManageLocalStorageService } from '../../services/manage-local-storage.service';
 import { PlayersService } from '../../services/players.service';
 import { CountVotesService } from 'src/app/services/count-votes.service';
+import { ResetService } from 'src/app/services/reset.service';
 
 @Component({
   selector: 'app-game-table',
@@ -9,20 +10,17 @@ import { CountVotesService } from 'src/app/services/count-votes.service';
   styleUrls: ['./game-table.component.css'],
 })
 export class GameTableComponent {
-  col: number = 9;
   displayCardsPlayers: string = 'none';
-  displayOptions: string = 'block';
+  displayTotalVotes:string = 'none'
   playersName: Array<String> = this.players.players;
   numbers: Array<Number> = this.players.numbers;
   numberAssingPlayers: Array<Number> = this.countVotes.numberAssingPlayers;
-  numberMainPlayer: number = this.getNumberMain();
+  numberMainPlayer: any;
   displayNumberMain: string = 'none';
   selectedCard: Array<Number> = this.countVotes.numberAssingPlayers;
   votes: Array<Number> = this.countVotes.votes;
-  text: string = '';
-  displayLoader: string = this.countVotes.displayLoader;
-  totalVotes: string = 'none';
-  i: number = 0;
+  displayGameTable: string = 'block';
+  average:number = 0
 
   constructor(
     public manageLocalStorage: ManageLocalStorageService,
@@ -34,29 +32,26 @@ export class GameTableComponent {
     let name = this.manageLocalStorage.data[key];
     return name;
   }
+
   ngOnInit() {
     this.playersName.push(this.manageLocalStorage.data['player_name']);
-    /* method to change the display of the main page, after 3 seconds */
     setTimeout(() => {
       (this.displayCardsPlayers = 'none'), (this.displayCardsPlayers = 'block');
-    }, 1000);
+    }, 2000);
   }
 
-  getNumber(position: number): void {
+  getNumberMain(position: number): void {
     this.countVotes.getNumber(position);
-    for (let i = 0; i < this.selectedCard.length; i++) {
+    this.numberMainPlayer = this.countVotes.numberMainPlayer;
+    this.countVotes.changeDisplayButton(true);
+    this.average = this.countVotes.average()
+  }
+
+  getVotePlayers(position: number): void {
+    this.countVotes.getNumber(position);
+    for (let i = 0; i < this.selectedCard.length - 1; i++) {
       this.changeVote(i);
     }
-    this.displayCardsPlayers = 'none';
-    this.displayOptions = 'block';
-    setTimeout(() => {
-      (this.displayCardsPlayers = 'none'),
-        ((this.totalVotes = 'block'),
-        (this.displayCardsPlayers = 'block'),
-        (this.displayOptions = 'none'),
-        (this.displayNumberMain = 'block'));
-    }, 2000);
-    this.numberMainPlayer = this.getNumberMain();
   }
 
   changeVote(position: number): void {
@@ -70,17 +65,11 @@ export class GameTableComponent {
     let div = document.getElementById('card_number' + i);
     let text: any = '';
     text = document.getElementById('text' + i);
-
     if (div) {
       div.style.backgroundColor = '#e4a4ff';
       div.style.borderRadius = '7px';
       div.style.width = '35px';
       div.style.height = '60px';
     }
-  }
-
-  getNumberMain(): number {
-    let n = this.countVotes.numberMainPlayer;
-    return n;
   }
 }
