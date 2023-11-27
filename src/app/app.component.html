@@ -8,11 +8,10 @@
   <body>
     <div class="content">
       <div class="container">
-        <initial-logo class="initial" style="display: none"></initial-logo>
-        <app-input-text style="display: none"></app-input-text>
-        <app-input-player style="display: none"></app-input-player>
-        <app-game-table style="display: block"></app-game-table>
-        <app-invite style="display: none"></app-invite>
+        <initial-logo class="initial" style="display: {{ initial }};"></initial-logo>
+        <app-input-text style="display: {{displayCreateGame}};"></app-input-text>
+        <app-input-player style="display: {{setDisplay('game_name')}};"></app-input-player>
+        <app-game-table style="display: {{setDisplay('player_name')}};"></app-game-table>
       </div>
     </div>
   </body>
