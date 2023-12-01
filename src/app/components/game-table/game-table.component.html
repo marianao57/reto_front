@@ -1,76 +1,165 @@
-<ng-container>
-  <header
-    class="container-game canimate__animated animate__fadeIn animate__delay-0.8s"
-    style="display: {{ displayCardsPlayers }};"
-  >
-    <app-header ></app-header>
+<div
+  class="container-game animate__animated animate__fadeIn animate__delay-0.8s"
+  id="container-game"
+>
+  <header>
+    <app-header></app-header>
   </header>
 
-  <div
-    class="content-game animate__animated animate__fadeIn animate__delay-0.8s"
-    style="display: {{ displayGameTable }};"
-  >
-    <mat-grid-list cols="3" rowWidth="2:1" rowHeight="2:1">
-      <div class="content-grid">
-        <mat-grid-tile *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8]">
-          <div 
-            class="card animate__animated animate__fadeIn animate__delay-0.8s"
-          >
-            <ng-container *ngIf="i !== 4; else isFour">
-              <ng-container *ngIf="i !== 7; else isSeven">
-                <div>
-                  <app-card> </app-card>
-                  <div id="votes{{i}}">
-                    <p  class="votes" >
-                      {{ numberAssingPlayers[i] }}
-                    </p>
-                  </div>
-                  <p>{{ playersName[i] }}</p>
-                </div>
-              </ng-container>
-            </ng-container>
-            <ng-template #isSeven>
-              <div class="container-name">
-                <app-icon-player></app-icon-player>
-                <app-player-name></app-player-name>
-                <p id="numberMain" style="display: {{ displayNumberMain }};">
-                  {{ numberMainPlayer }}
-                </p>
-              </div>
-            </ng-template>
-            <ng-template #isFour>
-              <div>
-                <app-container-triple></app-container-triple>
-              </div>
-            </ng-template>
-          </div>
-        </mat-grid-tile>
-      </div>
-    </mat-grid-list>
-    <div class="grid-cards-numbers" id="options">
-      <mat-grid-list cols="9" rowHeight="1:1" >
-        <div 
-          class="animate__animated animate__fadeIn animate__delay-0.9s"
-          *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8]"
-        >
-          <p class="text-card" *ngIf="i === 0">Elige una carta ☟</p>
-          <mat-grid-tile>
-            <p id="number{{ i }}">{{ numbers[i] }}</p>
-            <app-card
-              (click)="getNumberMain(i)"
-              class="numbers-card"
-              id="card_number{{ i }}"
-              (click)="changeStyleCards(i)"
-            >
-            </app-card>
-          </mat-grid-tile>
+  <div class="content-game" *ngIf="displayGameTable">
+    <div class="container-board">
+      <div></div>
+      <div class="container-cards">
+        <div class="card">
+          <p id="votePlayer0" *ngIf="displayTotalVotes()">{{ numberAssingPlayers[0] }}</p>
+          <app-card  id="card0"></app-card>
+          <p>{{ playersName[0] }}</p>
         </div>
-      </mat-grid-list>
+        <div class="card">
+          <p id="votePlayer1" *ngIf="displayTotalVotes()">{{ numberAssingPlayers[1] }}</p>
+          <app-card  id="card1"></app-card>
+          <p>{{ playersName[1] }}</p>
+        </div>
+        <div class="card">
+          <p id="votePlayer2" *ngIf="displayTotalVotes()">{{ numberAssingPlayers[2] }}</p>
+          <app-card  id="card2"></app-card>
+          <p>{{ playersName[2] }}</p>
+        </div>
+      </div>
+      <div></div>
+      <div class="container-cards">
+        <p id="votePlayer3" *ngIf="displayTotalVotes()">{{ numberAssingPlayers[3] }}</p>
+        <div class="card">
+          <app-card  id="card3"></app-card>
+          <p>{{ playersName[3] }}</p>
+        </div>
+      </div>
+      <div>
+        <app-container-triple></app-container-triple>
+      </div>
+      <div class="container-cards">
+        <div class="card">
+          <p id="votePlayer4" *ngIf="displayTotalVotes()">{{ numberAssingPlayers[4] }}</p>
+          <app-card  id="card4"></app-card>
+          <p>{{ playersName[4] }}</p>
+        </div>
+      </div>
+      <div></div>
+      <div class="container-cards">
+        <div class="card">
+          <p id="votePlayer5" *ngIf="displayTotalVotes()">{{ numberAssingPlayers[5] }}</p>
+          <app-card  id="card5"></app-card>
+          <p>{{ playersName[5] }}</p>
+        </div>
+        <div class="card main-player">
+          <app-icon-player></app-icon-player>
+          <app-player-name></app-player-name>
+          <p id="votePlayer7">{{ numberMainPlayer }}</p>
+        </div>
+        <div class="card">
+          <p id="votePlayer6" *ngIf="displayTotalVotes()">{{ numberAssingPlayers[6] }}</p>
+          <app-card  id="card6"></app-card>
+          <p>{{ playersName[6] }}</p>
+        </div>
+      </div>
+      <div></div>
     </div>
-    <div id="totalVotes" style="display: {{displayTotalVotes}};">
+
+    <h3>Elige una carta 👇</h3>
+    <div class="grid-cards-numbers" id="options">
+      <div class="selection-cards">
+        <p id="number0">{{ numbers[0] }}</p>
+        <app-card
+          (click)="getNumberMain(0)"
+          class="numbers-card"
+          id="card_number{{ 0 }}"
+          (click)="changeStyleCards(0)"
+        >
+        </app-card>
+      </div>
+      <div class="selection-cards">
+        <p id="number1">{{ numbers[1] }}</p>
+        <app-card
+          (click)="getNumberMain(1)"
+          class="numbers-card"
+          id="card_number1"
+          (click)="changeStyleCards(1)"
+        >
+        </app-card>
+      </div>
+      <div class="selection-cards">
+        <p id="number2">{{ numbers[2] }}</p>
+        <app-card
+          (click)="getNumberMain(2)"
+          class="numbers-card"
+          id="card_number2"
+          (click)="changeStyleCards(2)"
+        >
+        </app-card>
+      </div>
+      <div class="selection-cards">
+        <p id="number3">{{ numbers[3] }}</p>
+        <app-card
+          (click)="getNumberMain(3)"
+          class="numbers-card"
+          id="card_number3"
+          (click)="changeStyleCards(3)"
+        >
+        </app-card>
+      </div>
+      <div class="selection-cards">
+        <p id="number4">{{ numbers[4] }}</p>
+        <app-card
+          (click)="getNumberMain(4)"
+          class="numbers-card"
+          id="card_number4"
+          (click)="changeStyleCards(4)"
+        >
+        </app-card>
+      </div>
+      <div class="selection-cards">
+        <p id="number5">{{ numbers[5] }}</p>
+        <app-card
+          (click)="getNumberMain(5)"
+          class="numbers-card"
+          id="card_number5"
+          (click)="changeStyleCards(5)"
+        >
+        </app-card>
+      </div>
+      <div class="selection-cards">
+        <p id="number6">{{ numbers[6] }}</p>
+        <app-card
+          (click)="getNumberMain(6)"
+          class="numbers-card"
+          id="card_number6"
+          (click)="changeStyleCards(6)"
+        >
+        </app-card>
+      </div>
+      <div class="selection-cards">
+        <p id="number7">{{ numbers[7] }}</p>
+        <app-card
+          (click)="getNumberMain(7)"
+          class="numbers-card"
+          id="card_number7"
+          (click)="changeStyleCards(7)"
+        >
+        </app-card>
+      </div>
+      <div class="selection-cards">
+        <p id="number8">{{ numbers[8] }}</p>
+        <app-card
+          (click)="getNumberMain(8)"
+          class="numbers-card"
+          id="card_number8"
+          (click)="changeStyleCards(8)"
+        >
+        </app-card>
+      </div>
+    </div>
+    <div id="totalVotes" *ngIf="displayTotalVotes()">
       <app-votes></app-votes>
-      <p>Promedio</p>
-      <h1>{{average}}</h1>
     </div>
   </div>
-</ng-container>
+</div>

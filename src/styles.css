@@ -1,4 +1,4 @@
-body {
+body, html {
   background: radial-gradient(
     50% 50% at 50% 50%,
     #330072 0%,
@@ -6,17 +6,12 @@ body {
   );
   font-family: "Sulphur Point", sans-serif;
   font-family: "Kanit", sans-serif;
-  color: white;
-}
-.container {
-  width: 100%;
-}
-
-html,
-body {
-  height: 100%;
-}
-body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: white;
+  min-height: 100vh;
+}
+
+.container-root{
+  height: 110%;
 }

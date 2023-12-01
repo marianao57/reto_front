@@ -8,14 +8,14 @@ describe('InitialLogoComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [InitialLogoComponent]
+      declarations: [InitialLogoComponent],
     });
     fixture = TestBed.createComponent(InitialLogoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('create the component', () => {
     expect(component).toBeTruthy();
   });
 });

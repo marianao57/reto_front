@@ -1,24 +1,30 @@
-<link rel="stylesheet" href="container-triple.component.css" />
-<ng-container>
+<div class="content">
   <div class="container-big">
     <div class="medium-container">
       <div class="center">
-        <div class="loader" style="display: {{ displayLoader }};">
+        <div class="loader" *ngIf="displayLoader">
           <img class="loader-img" src="../assets/loader.gif" alt="" />
           <p class="animate__animated animate__pulse animate__infinite">
             Contando votos
           </p>
         </div>
-        <div class="vote-btn">
-          <button
-            class="btn animate__animated animate__fadeIn animate__delay-0.8s"
-            (click)="countVotesFunction()"
-            id="btn"
-          >
+        <div
+          class="vote-btn animate__animated animate__fadeIn animate__delay-0.8s"
+          *ngIf="displayButtonFunction()"
+        >
+          <button class="btn" (click)="countVotesFunction()" id="btn">
             Revelar cartas
+          </button>
+        </div>
+        <div
+          class="vote-btn animate__animated animate__fadeIn animate__delay-0.8s"
+          *ngIf="displayButtonResetFunction()"
+        >
+          <button class="btn" id="resetButton" (click)="reset()">
+            Reiniciar Partida
           </button>
         </div>
       </div>
     </div>
   </div>
-</ng-container>
+</div>

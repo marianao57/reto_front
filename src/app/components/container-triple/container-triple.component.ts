@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CountVotesService } from 'src/app/services/count-votes.service';
+import { DisplayComponentsService } from 'src/app/services/display-components.service';
+import { ManageLocalStorageService } from 'src/app/services/manage-local-storage.service';
 
 @Component({
   selector: 'app-container-triple',
@@ -7,36 +9,66 @@ import { CountVotesService } from 'src/app/services/count-votes.service';
   styleUrls: ['./container-triple.component.css'],
 })
 export class ContainerTripleComponent {
-  displayLoader: string = 'none';
+  displayLoader: boolean = false;
+  n: any = this.countVotes.numberMainPlayer;
+  displayButtonCount: boolean = false;
+  displayButtonReset: boolean = false;
+  resetAux: boolean = false;
 
-  constructor(private countVotes: CountVotesService) {}
+  constructor(
+    private countVotes: CountVotesService,
+    private displayComponents: DisplayComponentsService,
+    private manage: ManageLocalStorageService
+  ) {}
+
   ngOnInit() {
-    this.countVotes.changeDisplayButton(false);
-    this.countVotes.hideVotes(false);
+    this.countVotes.changeDisplayVotes(false);
   }
 
   countVotesFunction(): void {
-  
-    this.countVotes.changeDisplayButton(false);
-    this.displayLoader = 'block';
-    this.countVotes.countVotes();
+    this.displayLoader = true;
     setTimeout(() => {
-      (this.displayLoader = 'none'),
-        (this.countVotes.hideVotes(true),
+      (this.displayLoader = false),
         this.countVotes.changeDisplayOptions(false),
-        this.countVotes.changeDisplayTotalVotes(true));
+        (this.displayComponents.totalVotes = true),
+        (this.displayComponents.votesPlayers = true),
+        this.displayButtonResetFunction();
     }, 2000);
   }
 
-  changeStyleCardsPlayers(): void {
-    let divs = document.getElementsByName('card_players');
-    if (divs) {
-      divs.forEach((div: HTMLElement) => {
-        div.style.backgroundColor = '#e4a4ff';
-        div.style.borderRadius = '7px';
-        div.style.width = '35px';
-        div.style.height = '60px';
-      });
+  displayButtonFunction(): boolean {
+    let n = this.countVotes.numberMainPlayer;
+    if (n && !this.displayLoader && !this.displayButtonReset) {
+      this.displayButtonCount = true;
+      return true;
+    } else if (!this.displayButtonReset) {
+      this.displayButtonCount = false;
+      return false;
+    }
+    return false;
+  }
+
+  reset(): void {
+    this.displayComponents.resetVotesPlayers();
+    this.displayComponents.resetVotesTotales();
+    this.displayComponents.resetOptions();
+    this.countVotes.startCount = false;
+    this.countVotes.resetGame(true);
+    this.resetAux = true;
+  }
+
+  displayButtonResetFunction(): boolean {
+    let n = this.countVotes.numberMainPlayer;
+    if (this.resetAux) {
+      this.displayButtonReset = false;
+      return false;
+    }
+    if (!this.displayLoader && !this.displayButtonCount && n) {
+      this.displayButtonReset = true;
+      return true;
+    } else {
+      this.displayButtonReset = false;
+      return false;
     }
   }
 }

@@ -19,7 +19,22 @@
 .container-text {
   text-align: center;
 }
-
+.container-invite {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-content: center;
+}
+app-invite{
+  width: 100%;
+  
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .btn {
   border: 1px solid #fff;
   padding: 8px;
@@ -36,9 +51,9 @@
   color: blueviolet;
   cursor: pointer;
 }
-.name-player{
+.name-player {
   color: aqua;
 }
-.invite{
+.invite {
   display: flex;
 }

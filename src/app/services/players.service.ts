@@ -11,11 +11,10 @@ export class PlayersService {
     'Camila',
     'Laura',
     'Manuel',
-    '',
     'Fernando',
     'Samuel',
-    this.nameMainPlayer,
     'Monica',
+    this.nameMainPlayer,
   ];
   numbers = this.fillArrayNumbers();
 
@@ -23,7 +22,7 @@ export class PlayersService {
 
   fillArrayNumbers(): Array<Number> {
     let numbers: Array<number> = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 9; i++) {
       let numeroAleatorio = Math.floor(Math.random() * 100) + 1;
       if (numbers.includes(numeroAleatorio)) {
         i = i - 1;

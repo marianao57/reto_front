@@ -1,15 +1,23 @@
-<ng-container>
-  <div class="grid-cards-numbers" style="display: {{ displaySelectedCards }};" >
-    <mat-grid-list cols="{{ size.length }}" rowHeight="1:1">
-      <div *ngFor="let i of size">
-        <mat-grid-tile>
-          <div>
-            <p>{{ selectedCards[i] }}</p>
-            <app-card></app-card>
-            <p>{{ votes[i] }}</p>
-          </div>
-        </mat-grid-tile>
+<div class="grid-cards-numbers">
+  <div *ngFor="let i of size">
+    <div class="item">
+      <div class="vote">
+        <p id="vote">{{ selectedCards[i] }}</p>
       </div>
-    </mat-grid-list>
+      <div class="card">
+        <app-card></app-card>
+      </div>
+      <div>
+        <p>{{ votes[i] }}</p>
+      </div>
+    </div>
   </div>
-</ng-container>
+  <div class="average">
+    <div>
+      <p>Promedio</p>
+    </div>
+    <div>
+      <h1>{{ average }}</h1>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { IconPragmaComponent } from '../icon-pragma/icon-pragma.component';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {

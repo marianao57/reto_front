@@ -6,8 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./initial-logo.component.css'],
 })
 export class InitialLogoComponent {
-  isLoading = 'block';
-  ngOnInit() {
-
-  }
+  
+  ngOnInit() {}
 }

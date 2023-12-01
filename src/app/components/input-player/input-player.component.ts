@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { VerifyTextService } from '../../services/verify-text.service';
 import { ManageLocalStorageService } from '../../services/manage-local-storage.service';
+import { CountVotesService } from 'src/app/services/count-votes.service';
 
 @Component({
   selector: 'app-input-player',
@@ -9,22 +10,24 @@ import { ManageLocalStorageService } from '../../services/manage-local-storage.s
 })
 export class InputPlayerComponent {
   userName: string = '';
-  displayCreate: string = 'block';
-  displayGameTable: string = 'none';
-  displayMessage: string = 'none';
+  display: boolean = true;
+  displayMessage: boolean = false;
   constructor(
     private VerifyTextService: VerifyTextService,
-    private manageLocalStorage: ManageLocalStorageService
+    private manageLocalStorage: ManageLocalStorageService,
+    private countService: CountVotesService
   ) {}
 
+  
   /* method to verify that the username complies and change the display of the components */
   execute(): void {
+    
     let result: number = this.VerifyTextService.verifyNameGame(this.userName);
     if (result == 1) {
       this.manageLocalStorage.saveLocalStorage('player_name', this.userName);
-      this.displayCreate = 'none';
+      this.display = false;
     } else {
-      this.displayMessage = 'block';
+      this.displayMessage = true;
     }
   }
 }

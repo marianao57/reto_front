@@ -1,3 +1,24 @@
 .grid-cards-numbers{
+    display: flex;
+  flex-wrap: wrap;
+}
+.item{
+    flex: 1 1 200px;
+    margin: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card{
+    z-index: 1;
+}
+.vote{
+    position: absolute;
+    z-index: 2;
+}
+.average{
+    margin-left: 100px;
     display: inline;
 }

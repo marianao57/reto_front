@@ -15,7 +15,7 @@ describe('ContainerTripleComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('create the component', () => {
     expect(component).toBeTruthy();
   });
 });

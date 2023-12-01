@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PlayersService } from './players.service';
+import { ManageLocalStorageService } from './manage-local-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +16,13 @@ export class CountVotesService {
   text: string = '';
   displayLoader: string = 'none';
   displayVotes: string = 'none';
+  startCount: boolean = false;
+  reset: boolean = false;
 
-  constructor(private players: PlayersService) {}
+  constructor(
+    private players: PlayersService,
+    private manage: ManageLocalStorageService
+  ) {}
 
   getNumber(position: number): void {
     let n = Number(this.numbers[position]);
@@ -24,19 +30,19 @@ export class CountVotesService {
   }
 
   assignNumbers(): void {
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 7; i++) {
       const randomNumber: number = Math.floor(Math.random() * 9);
       this.numberAssingPlayers.push(this.numbers[randomNumber]);
     }
+    this.numberAssingPlayers.push(this.numberMainPlayer);
   }
 
   countVotes(): void {
     this.assignNumbers();
-    this.numberAssingPlayers.push(this.numberMainPlayer);
     this.selectedCard = this.numberAssingPlayers;
     let count = 0;
-    for (let i = 0; i < this.selectedCard.length - 1; i++) {
-      for (let j = 0; j < this.selectedCard.length - 1; j++) {
+    for (let i = 0; i < this.selectedCard.length; i++) {
+      for (let j = 0; j < this.selectedCard.length; j++) {
         if (this.numberAssingPlayers[j] == this.selectedCard[i]) {
           count++;
         }
@@ -66,16 +72,6 @@ export class CountVotesService {
     this.votes = votes;
   }
 
-  changeVote(position: number): string {
-    let p: any = document.getElementById('card_selectd');
-    if (p) {
-      p.textContent = this.selectedCard[position];
-      return p;
-    } else {
-      return '';
-    }
-  }
-
   getVotes(position: number): string {
     let p: any = document.getElementById('votes' + position);
     if (p) {
@@ -86,74 +82,52 @@ export class CountVotesService {
     }
   }
 
-  average(): number {
-    this.countVotes()
+  average(): any {
+    this.countVotes();
     let accumulator = 0;
-    let lessCards = 0
+    let lessCards = 0;
     let averageTotal;
     for (let i = 0; i < this.selectedCard.length; i++) {
-      if(!this.selectedCard[i]){
-        lessCards ++
-        continue
+      if (!this.selectedCard[i]) {
+        lessCards++;
+        continue;
       }
       accumulator += this.selectedCard[i].valueOf();
     }
     averageTotal = accumulator / (Number(this.selectedCard.length) - lessCards);
-    console.log(accumulator);
-    return averageTotal;
+    return averageTotal.toFixed(2);
   }
 
-  resetGame(): void {
-    this.selectedCard = [];
-    this.votes = [];
-    this.numberMainPlayer;
+  resetGame(condition: boolean): boolean {
+    if (condition) {
+      this.selectedCard = [];
+      this.votes = [];
+      this.numberAssingPlayers = [];
+      this.numberMainPlayer = '';
+      this.reset = true;
+      return true;
+    } else {
+      this.reset = false;
+      return false;
+    }
   }
 
-  changeDisplayButton(condition: boolean): void {
-    let button = document.getElementById('btn');
-    if (button) {
-      if (this.numberMainPlayer && condition) {
-        button.style.display = 'block';
-      } else {
-        button.style.display = 'none';
+  changeDisplayVotes(conditional: boolean): void {
+    for (let i = 0; i < this.numberAssingPlayers.length; i++) {
+      let p = document.getElementById('votes' + i);
+      if (p && conditional) {
+        p.style.display = 'block';
+      } else if (p && !conditional) {
+        p.style.display = 'none';
       }
     }
   }
 
-  changeDisplayVotes(condition: boolean, div: any): void {
-    if (div) {
-      if (this.numberMainPlayer && condition) {
-        div.style.display = 'block';
-      } else {
-        div.style.display = 'none';
-      }
-    }
-  }
-
-  hideVotes(condition: boolean): void {
-    for (let i = 0; i < 9; i++) {
-      if (i == 4 || i == 7) {
-        continue;
-      }
-      let div = document.getElementById('votes' + i);
-      this.changeDisplayVotes(condition, div);
-    }
-  }
-  changeDisplayTotalVotes(condition: boolean): void {
-    let div = document.getElementById('totalVotes');
-    if (div) {
-      if (condition) {
-        div.style.display = 'block';
-      } else {
-        div.style.display = 'none';
-      }
-    }
-  }
   changeDisplayOptions(condition: boolean): void {
     let div = document.getElementById('options');
     if (div) {
       if (condition) {
-        div.style.display = 'block';
+        div.style.display = 'flex';
       } else {
         div.style.display = 'none';
       }

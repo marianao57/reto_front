@@ -1,23 +1,21 @@
-<link rel="stylesheet" href="input-player.component.css">
-<div class="content">
-  <app-icon-pragma style="display: {{displayCreate}};"></app-icon-pragma>
+<div class="content" *ngIf="display">
+  <div>
+    <app-icon-pragma></app-icon-pragma>
+  </div>
   <div class="container animate__animated animate__fadeIn animate__delay-0.8s">
-    <ng-container *ngIf= displayGameTable == 'none'>
-      <div class="center" style="display: {{displayCreate}};">
-        <p>Tu nombre</p>
-        <input type="text" [(ngModel)]="userName" class="player-name" />
-        <div class="radio">
-          <label for="player">Jugador</label>
-          <input class="input-radio" type="radio" value="player" id="player" />
-          <label for="viewer">Espectador</label>
-          <input class="input-radio" type="radio" value="viewer" id="viewer" />
-        </div>
-        <div class="container-btn">
+    <div class="center">
+      <p>Tu nombre</p>
+      <input type="text" [(ngModel)]="userName" class="player-name" />
+      <div class="radio">
+        <label for="player">Jugador</label>
+        <input class="input-radio" type="radio" value="player" id="player" />
+        <label for="viewer">Espectador</label>
+        <input class="input-radio" type="radio" value="viewer" id="viewer" />
+      </div>
+      <div class="container-btn">
         <button (click)="execute()" class="btn">Continuar</button>
       </div>
-      <p style="display: {{displayMessage}};">Nombre no válido</p>
-      </div>
-    </ng-container>
-  
-  </div></div>
-  
+      <p *ngIf="displayMessage">Nombre no válido</p>
+    </div>
+  </div>
+</div>

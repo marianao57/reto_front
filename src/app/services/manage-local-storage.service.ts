@@ -9,11 +9,11 @@ export class ManageLocalStorageService {
 
   saveLocalStorage(key: string, value: string): void {
     localStorage.setItem(key, value);
-    this.data[key] = value
+    this.data[key] = value;
   }
 
-  getData(key:string):string{
-    let name = this.data[key]
-    return name
+  getData(key: string): string {
+    let name = this.data[key];
+    return name;
   }
 }

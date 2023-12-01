@@ -10,7 +10,7 @@ export class VerifyTextService {
   /* method to check if the name entered meets the requirements, 
   returns 1 if it meets and 0 if it does not meet */
   verifyNameGame(name: string): number {
-    //name = 'mariana'
+    
     if (
       this.checkSpecialCharacters(name) &&
       this.checkSize(name) &&
@@ -23,7 +23,7 @@ export class VerifyTextService {
   }
 
   //returns true if it has no special characters
-  checkSpecialCharacters(name: string) {
+  checkSpecialCharacters(name: string): boolean {
     const pattern = /^[a-zA-Z0-9]+$/;
     return pattern.test(name);
   }

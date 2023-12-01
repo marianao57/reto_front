@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { VerifyTextService } from '../../services/verify-text.service';
 import { ManageLocalStorageService } from '../../services/manage-local-storage.service';
+import { IconPragmaComponent } from '../icon-pragma/icon-pragma.component';
 
 @Component({
   selector: 'app-input-text',
@@ -9,8 +10,8 @@ import { ManageLocalStorageService } from '../../services/manage-local-storage.s
 })
 export class InputTextComponent {
   text: string = 'Nombra la partida';
-  display: string = 'block';
-  message: string = 'none';
+  display: boolean = true;
+  message: boolean = false;
   inputValue: string = '';
   ls: any;
   inputEscribiendo: boolean = false; // Inicialmente deshabilitado
@@ -24,9 +25,9 @@ export class InputTextComponent {
     let result: number = this.verifyText.verifyNameGame(this.inputValue);
     if (result == 1) {
       this.manageLocalStorage.saveLocalStorage('game_name', this.inputValue);
-      this.display = 'none'
+      this.display = false
     } else {
-      this.message = 'block';
+      this.message = true;
     }
   }
 

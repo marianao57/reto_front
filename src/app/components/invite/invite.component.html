@@ -1,29 +1,24 @@
-<ng-container >
-  <div class="container animate__animated animate__fadeIn animate__delay-0.8s" >
-    <mat-card>
-      <div class="card" style="display: {{display}};">
-        <div class="title">
-          <mat-card-header>
-            <mat-card-title>Invitar jugadores</mat-card-title>
-            <div class="button-close">
+<ng-container>
 
-              <button class="close" (click)="close()">X</button>
-            </div>
-          </mat-card-header>
-        </div>
-        <div class="content">
-          <mat-card-content>
-            <label id="link" class="link">
-              https://prsgplsnningpoker.com/9QdP98VGUrZQLNCqYAF7
-            </label>
-          </mat-card-content>
-        </div>
-        <div class="content">
-          <mat-card-actions>
-            <button class="btn" (click)="copy()">Copiar Link</button>
-          </mat-card-actions>
-        </div>
+  <div
+    class="container-invite animate__animated animate__fadeIn animate__delay-0.8s"
+    id="invite"
+  >
+    <div class="title">
+      <h3>Invitar jugadores</h3>
+      <div class="button-close">
+        <button class="close" (click)="close()">X</button>
       </div>
-    </mat-card>
+    </div>
+    <div class="content">
+      <div>
+        <p id="link" class="link">
+          https://prsgplsnningpoker.com/9QdP98VGUrZQLNCqYAF7
+        </p>
+      </div>
+      <div class="container-btn">
+        <button class="btn" (click)="copy()">Copiar Link</button>
+      </div>
+    </div>
   </div>
 </ng-container>

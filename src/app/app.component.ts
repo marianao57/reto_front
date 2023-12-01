@@ -7,24 +7,36 @@ import { ManageLocalStorageService } from './services/manage-local-storage.servi
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  initial = 'block';
-  displayCreateGame = 'none';
+  initial: boolean = true;
+  displayCreateGame: boolean = false;
   data: Array<string> = [];
-  displayInivite: string = 'none';
+  title: string = 'reto';
   constructor(private manageLocalStorage: ManageLocalStorageService) {}
   ngOnInit() {
-    localStorage.clear();
-    /* method to change the display of the main page, after 3 seconds */
+    console.log(this.displayCreateGame);
     setTimeout(() => {
-      (this.initial = 'none'), (this.displayCreateGame = 'block');
+      (this.initial = false), (this.displayCreateGame = true);
     }, 3000);
   }
 
-  setDisplay(key: string): string {
-    let display = 'none';
-    if (localStorage.getItem(key) !== null) {
-      display = 'block';
+  setDisplayInputPlayer(key:string) :boolean {
+    let value = this.manageLocalStorage.getData(key)
+    if(value){
+      this.displayCreateGame = false
+      return true
     }
-    return display;
+    else{
+      return false
+    }
+  }
+  setDisplayGame():boolean{
+    let value = this.manageLocalStorage.getData('player_name')
+    if(value){
+      this.setDisplayInputPlayer('prueba')
+      return true
+    }
+    else{
+      return false
+    }
   }
 }
