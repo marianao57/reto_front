@@ -20,10 +20,9 @@ export class GameTableComponent {
   average: number = 0;
   startCount: boolean = this.countVotes.startCount;
 
-
   constructor(
     public manageLocalStorage: ManageLocalStorageService,
-    private players: PlayersService,
+    public players: PlayersService,
     public countVotes: CountVotesService,
     public displayComponents: DisplayComponentsService
   ) {}
@@ -31,15 +30,18 @@ export class GameTableComponent {
   ngOnInit() {}
 
   getNumberMain(position: number): void {
-    if(this.countVotes.reset){
-      console.log("entro");
-      this.countVotes.resetGame(true)
+    if (this.countVotes.reset) {
+      this.countVotes.resetGame(true);
+      this.countVotes.getNumber(position);
+      this.numberMainPlayer = this.countVotes.numberMainPlayer;
+      this.displayComponents.showMainNumber(this.numberMainPlayer);
     }
-    this.countVotes.startCount = true
+    this.countVotes.startCount = true;
     this.startCount = this.countVotes.startCount;
     this.countVotes.getNumber(position);
     this.numberMainPlayer = this.countVotes.numberMainPlayer;
     this.average = this.countVotes.average();
+    this.displayComponents.changeStyleCards()
   }
 
   changeStyleCards(i: number): void {
@@ -67,14 +69,4 @@ export class GameTableComponent {
     return this.displayComponents.totalVotes;
   }
 
-  //aun no funciona, para cambiar los estilos de las cartas de los jugadores
-  styleCardsPlayers(): void {
-    let card = document.getElementById('card5');
-    if (card) {
-      card.style.backgroundColor = 'red';
-      card.style.borderRadius = '7px';
-      card.style.width = '35px';
-      card.style.height = '60px';
-    }
-  }
 }

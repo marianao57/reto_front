@@ -10,7 +10,7 @@ export class AppComponent {
   initial: boolean = true;
   displayCreateGame: boolean = false;
   data: Array<string> = [];
-  title: string = 'reto';
+  title: string | undefined = 'reto';
   constructor(private manageLocalStorage: ManageLocalStorageService) {}
   ngOnInit() {
     console.log(this.displayCreateGame);

@@ -9,16 +9,15 @@ import { ManageLocalStorageService } from 'src/app/services/manage-local-storage
   styleUrls: ['./container-triple.component.css'],
 })
 export class ContainerTripleComponent {
-  displayLoader: boolean = false;
-  n: any = this.countVotes.numberMainPlayer;
-  displayButtonCount: boolean = false;
-  displayButtonReset: boolean = false;
-  resetAux: boolean = false;
+  displayLoader: boolean | undefined = false;
+  n: any | undefined = this.countVotes.numberMainPlayer;
+  displayButtonCount: boolean | undefined = false;
+  displayButtonReset: boolean | undefined = false;
+  resetAux: boolean | undefined = false;
 
   constructor(
-    private countVotes: CountVotesService,
-    private displayComponents: DisplayComponentsService,
-    private manage: ManageLocalStorageService
+    public countVotes: CountVotesService,
+    private displayComponents: DisplayComponentsService
   ) {}
 
   ngOnInit() {
@@ -30,13 +29,20 @@ export class ContainerTripleComponent {
     setTimeout(() => {
       (this.displayLoader = false),
         this.countVotes.changeDisplayOptions(false),
-        (this.displayComponents.totalVotes = true),
-        (this.displayComponents.votesPlayers = true),
-        this.displayButtonResetFunction();
+        this.displayComponents.showVotesPlayers(),
+        this.displayButtonResetFunction(),
+        this.displayComponents.showTotalVotes(),
+        this.displayTotalVotes(),
+        this.displayComponents.showMainNumber(this.countVotes.numberMainPlayer);
     }, 2000);
   }
 
   displayButtonFunction(): boolean {
+    if (this.resetAux) {
+      this.resetAux = false;
+      this.displayButtonResetFunction();
+      return false;
+    }
     let n = this.countVotes.numberMainPlayer;
     if (n && !this.displayLoader && !this.displayButtonReset) {
       this.displayButtonCount = true;
@@ -55,12 +61,14 @@ export class ContainerTripleComponent {
     this.countVotes.startCount = false;
     this.countVotes.resetGame(true);
     this.resetAux = true;
+    this.displayComponents.initialStyle();
   }
 
   displayButtonResetFunction(): boolean {
     let n = this.countVotes.numberMainPlayer;
     if (this.resetAux) {
       this.displayButtonReset = false;
+      this.countVotes.reset = false;
       return false;
     }
     if (!this.displayLoader && !this.displayButtonCount && n) {
@@ -69,6 +77,13 @@ export class ContainerTripleComponent {
     } else {
       this.displayButtonReset = false;
       return false;
+    }
+  }
+
+  displayTotalVotes(): void {
+    let div = document.getElementById('containerTotalVotes');
+    if (div) {
+      div.style.visibility = 'visible';
     }
   }
 }

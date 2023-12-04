@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { VerifyTextService } from '../../services/verify-text.service';
 import { ManageLocalStorageService } from '../../services/manage-local-storage.service';
-import { CountVotesService } from 'src/app/services/count-votes.service';
 
 @Component({
   selector: 'app-input-player',
@@ -14,14 +13,11 @@ export class InputPlayerComponent {
   displayMessage: boolean = false;
   constructor(
     private VerifyTextService: VerifyTextService,
-    private manageLocalStorage: ManageLocalStorageService,
-    private countService: CountVotesService
+    private manageLocalStorage: ManageLocalStorageService
   ) {}
 
-  
   /* method to verify that the username complies and change the display of the components */
   execute(): void {
-    
     let result: number = this.VerifyTextService.verifyNameGame(this.userName);
     if (result == 1) {
       this.manageLocalStorage.saveLocalStorage('player_name', this.userName);

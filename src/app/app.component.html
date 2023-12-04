@@ -4,14 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="app.component.css" />
+    <title>reto</title>
   </head>
   <body>
     <div class="content">
       <div class="container">
-        <initial-logo class="initial" style="display: none;"></initial-logo>
-        <app-input-text style="display: none;"></app-input-text>
-        <app-input-player style="display: none;"></app-input-player>
-        <app-game-table style="display: block;"></app-game-table>
+        <initial-logo class="initial" *ngIf="initial"></initial-logo>
+        <app-input-text *ngIf="displayCreateGame"></app-input-text>
+        <app-input-player *ngIf="setDisplayInputPlayer('game_name')"></app-input-player>
+        <app-game-table *ngIf="setDisplayGame()"></app-game-table>
       </div>
     </div>
   </body>

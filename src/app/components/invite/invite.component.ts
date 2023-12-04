@@ -26,7 +26,6 @@ export class InviteComponent {
     if (game && invite) {
       game.style.zIndex = '0';
       invite.style.display = 'none';
-      invite.style.backgroundColor = 'red';
     }
   }
 }

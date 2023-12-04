@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { PlayersService } from './players.service';
-import { ManageLocalStorageService } from './manage-local-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -19,10 +18,7 @@ export class CountVotesService {
   startCount: boolean = false;
   reset: boolean = false;
 
-  constructor(
-    private players: PlayersService,
-    private manage: ManageLocalStorageService
-  ) {}
+  constructor(private players: PlayersService) {}
 
   getNumber(position: number): void {
     let n = Number(this.numbers[position]);
@@ -105,6 +101,7 @@ export class CountVotesService {
       this.numberAssingPlayers = [];
       this.numberMainPlayer = '';
       this.reset = true;
+      this.countVotes();
       return true;
     } else {
       this.reset = false;

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { VerifyTextService } from '../../services/verify-text.service';
 import { ManageLocalStorageService } from '../../services/manage-local-storage.service';
-import { IconPragmaComponent } from '../icon-pragma/icon-pragma.component';
 
 @Component({
   selector: 'app-input-text',

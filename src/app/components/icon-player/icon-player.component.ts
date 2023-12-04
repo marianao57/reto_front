@@ -7,12 +7,17 @@ import { ManageLocalStorageService } from '../../services/manage-local-storage.s
   styleUrls: ['./icon-player.component.css'],
 })
 export class IconPlayerComponent {
-  namePlayer:string = ''
+  namePlayer: string | any = '';
   constructor(private manageLocalStorage: ManageLocalStorageService) {}
 
   getInitials(): string {
-    let name = this.manageLocalStorage.data['player_name']
-    let initials = (name[0] + name[1]).toUpperCase();
+    let initials = '';
+    if (!this.manageLocalStorage.data['player_name']) {
+      initials = 'NN';
+      return initials;
+    }
+    let name = this.manageLocalStorage.data['player_name'];
+    initials = (name[0] + name[1]).toUpperCase();
     return initials;
   }
 }
