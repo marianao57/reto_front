@@ -4,16 +4,15 @@
 .container_player {
   display: flex;
   justify-content: center;
-  text-align: center;
-}
-.player {
+  align-items: center;
   background-color: #bdbdff;
   height: 50px;
   width: 50px;
   border-radius: 50%;
   text-align: center;
 }
-footer{
-  text-align: center;
-  padding: 20px;
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

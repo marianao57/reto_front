@@ -44,15 +44,6 @@ export class DisplayComponentsService {
     }
   }
 
-  showVotesPlayers(): void {
-    for (let i = 0; i < 8; i++) {
-      let div: any = document.getElementById('votePlayer' + i);
-      if (div) {
-        div.textContent = this.countService.numberAssingPlayers[i];
-      }
-    }
-  }
-
   showTotalVotes(): void {
     for (let i = 0; i < this.countService.selectedCard.length; i++) {
       let card: any = document.getElementById('cardVote' + i);
@@ -63,6 +54,15 @@ export class DisplayComponentsService {
       }
     }
     this.totalVotes = true;
+  }
+  
+  showIndividualVotes():void{
+    for (let i = 0; i < this.countService.numberAssingPlayers.length; i++) {
+      let voteIndividual: any = document.getElementById('votePlayer' + i);
+      if (voteIndividual) {
+        voteIndividual.textContent = this.countService.numberAssingPlayers[i];
+      }
+    }
   }
 
   showMainNumber(numberMain: any): void {
@@ -76,7 +76,22 @@ export class DisplayComponentsService {
     for (let i = 0; i < 8; i++) {
       let card = document.getElementById('card' + i);
       if (card) {
+        card.style.transition = 'all 0.5s ease';
         card.style.backgroundColor = '#e4a4ff';
+        card.style.borderRadius = '7px';
+        card.style.width = '35px';
+        card.style.height = '60px';
+        card.style.display = 'flex';
+      }
+    }
+  }
+
+  styleCardsInitial(): void {
+    for (let i = 0; i < 8; i++) {
+      let card = document.getElementById('card' + i);
+      if (card) {
+        card.style.transition = 'all 0.5s ease';
+        card.style.backgroundColor = 'transparent';
         card.style.borderRadius = '7px';
         card.style.width = '35px';
         card.style.height = '60px';

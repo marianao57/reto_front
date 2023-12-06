@@ -3,14 +3,14 @@
 
 module.exports = function (config) {
   config.set({
-    basePath: '',
-    frameworks: ['jasmine', '@angular-devkit/build-angular'],
+    basePath: "",
+    frameworks: ["jasmine", "@angular-devkit/build-angular"],
     plugins: [
-      require('karma-jasmine'),
-      require('karma-chrome-launcher'),
-      require('karma-jasmine-html-reporter'),
-      require('karma-coverage'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      require("karma-jasmine"),
+      require("karma-chrome-launcher"),
+      require("karma-jasmine-html-reporter"),
+      require("karma-coverage"),
+      require("@angular-devkit/build-angular/plugins/karma"),
     ],
     client: {
       jasmine: {
@@ -19,33 +19,27 @@ module.exports = function (config) {
         // for example, you can disable the random execution with `random: false`
         // or set a specific seed with `seed: 4321`
       },
-      clearContext: false // leave Jasmine Spec Runner output visible in browser
+      clearContext: false, // leave Jasmine Spec Runner output visible in browser
     },
     jasmineHtmlReporter: {
-      suppressAll: true // removes the duplicated traces
+      suppressAll: true, // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/reto'),
-      subdir: '.',
-      reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
-      ]
+      dir: require("path").join(__dirname, "./coverage/reto"),
+      subdir: ".",
+      reporters: [{ type: "html" }, { type: "text-summary" }],
     },
 
-    reporters: ['progress', 'kjhtml'],
-    browsers: ['Chrome'],
+    reporters: ["progress", "kjhtml", "coverage"],
+    browsers: ["Chrome"],
     restartOnFileChange: true,
     coverageIstanbulReporter: {
-      reports: [ 'html', 'lcovonly' ],
-      fixWebpackSourcePaths: true,
-      thresholds: {
-        statements: 80,
-        lines: 80,
-        branches: 80,
-        functions: 80
-      }
-    }
+      dir: "coverage/", // Directorio donde se guardará el reporte de cobertura
+      reporters: [
+        { type: "html", subdir: "html" }, // Reporte HTML
+        { type: "lcov", subdir: "lcov" }, // Reporte LCOV
+        { type: "text-summary" }, // Resumen de cobertura en consola
+      ],
+    },
   });
-  
 };

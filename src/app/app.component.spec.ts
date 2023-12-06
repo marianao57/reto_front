@@ -17,7 +17,7 @@ describe('AppComponent', () => {
         InputTextComponent,
         InputPlayerComponent,
         GameTableComponent,
-        InitialLogoComponent
+        InitialLogoComponent,
       ],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
@@ -31,14 +31,12 @@ describe('AppComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'reto'`, () => {
+  it('should have as title reto', () => {
     expect(component.title).toEqual('reto');
   });
 
   it('should render title', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('title')?.textContent).toContain(
-      'reto'
-    );
+    expect(compiled.querySelector('title')?.textContent).toContain('reto');
   });
 });

@@ -6,16 +6,18 @@
     <div class="center">
       <p>Tu nombre</p>
       <input type="text" [(ngModel)]="userName" class="player-name" />
+      <p *ngIf="displayMessage">Nombre no válido</p>
       <div class="radio">
-        <label for="player">Jugador</label>
-        <input class="input-radio" type="radio" value="player" id="player" />
-        <label for="viewer">Espectador</label>
-        <input class="input-radio" type="radio" value="viewer" id="viewer" />
+        <form>
+          <label for="player">Jugador</label>
+          <input class="input-radio" type="radio" value="player" id="player" />
+          <label for="viewer">Espectador</label>
+          <input class="input-radio" type="radio" value="viewer" id="viewer" />
+        </form>
       </div>
       <div class="container-btn">
         <button (click)="execute()" class="btn">Continuar</button>
       </div>
-      <p *ngIf="displayMessage">Nombre no válido</p>
     </div>
   </div>
 </div>

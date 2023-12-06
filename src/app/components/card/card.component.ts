@@ -7,5 +7,6 @@ import { CountVotesService } from 'src/app/services/count-votes.service';
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent {
+  
   constructor(private countVotes: CountVotesService) {}
 }

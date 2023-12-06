@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   background: radial-gradient(
     50% 50% at 50% 50%,
     #330072 0%,
@@ -10,8 +11,9 @@ body, html {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   color: white;
   min-height: 100vh;
+  overflow: hidden;
 }
 
-.container-root{
+.container-root {
   height: 110%;
 }

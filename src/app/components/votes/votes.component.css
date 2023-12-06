@@ -13,8 +13,11 @@
 }
 .card {
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.vote {
+.parrafo {
   position: absolute;
   z-index: 2;
 }
@@ -24,9 +27,8 @@
 }
 .votes-container {
   display: flex;
+  background-color: blue;
 }
-.container-votes {
-  display: inline;
-  justify-content: center;
-  align-items: center;
+.voto{
+  text-align: center;
 }

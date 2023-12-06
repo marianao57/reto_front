@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CountVotesService } from 'src/app/services/count-votes.service';
 import { DisplayComponentsService } from 'src/app/services/display-components.service';
-import { ManageLocalStorageService } from 'src/app/services/manage-local-storage.service';
 
 @Component({
   selector: 'app-container-triple',
@@ -29,11 +28,12 @@ export class ContainerTripleComponent {
     setTimeout(() => {
       (this.displayLoader = false),
         this.countVotes.changeDisplayOptions(false),
-        this.displayComponents.showVotesPlayers(),
         this.displayButtonResetFunction(),
         this.displayComponents.showTotalVotes(),
         this.displayTotalVotes(),
-        this.displayComponents.showMainNumber(this.countVotes.numberMainPlayer);
+        this.displayComponents.showMainNumber(this.countVotes.numberMainPlayer),
+        this.displayComponents.styleCardsInitial(),
+        this.displayComponents.showIndividualVotes();
     }, 2000);
   }
 
@@ -60,8 +60,8 @@ export class ContainerTripleComponent {
     this.displayComponents.resetOptions();
     this.countVotes.startCount = false;
     this.countVotes.resetGame(true);
-    this.resetAux = true;
     this.displayComponents.initialStyle();
+    this.resetAux = true;
   }
 
   displayButtonResetFunction(): boolean {

@@ -68,16 +68,6 @@ export class CountVotesService {
     this.votes = votes;
   }
 
-  getVotes(position: number): string {
-    let p: any = document.getElementById('votes' + position);
-    if (p) {
-      p.textContent = this.votes[position];
-      return p;
-    } else {
-      return '';
-    }
-  }
-
   average(): any {
     this.countVotes();
     let accumulator = 0;
@@ -101,7 +91,6 @@ export class CountVotesService {
       this.numberAssingPlayers = [];
       this.numberMainPlayer = '';
       this.reset = true;
-      this.countVotes();
       return true;
     } else {
       this.reset = false;

@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
 }
-.container-game{
+.container-game {
   width: 100%;
   min-height: 100vh;
 }
@@ -17,16 +17,6 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-}
-.numbers-card {
-  position: fixed;
-}
-.numbers-card:hover {
-  background-color: #6a6a6e;
-  cursor: pointer;
-}
-.numbers-card:clic {
-  background-color: red;
 }
 .grid-cards-numbers {
   display: flex;
@@ -43,8 +33,8 @@
 }
 .container-board {
   display: grid;
-  grid-template-columns: 100px 350px 100px;
-  grid-template-rows: 100px 300px 100px;
+  grid-template-columns: 150px 350px 150px;
+  grid-template-rows: 150px 300px 150px;
 }
 .container-table {
   position: relative;
@@ -58,10 +48,32 @@
   align-items: center;
 }
 .main-player {
+  text-align: center;
   margin-bottom: 20px;
 }
-.selection-cards{
+.selection-cards {
   display: flex;
   justify-content: center;
   align-content: center;
+}
+.numbers-card:hover {
+  background-color: #6a6a6e;
+  cursor: pointer;
+}
+.numbers-card {
+  position: fixed;
+  border-radius: 7px;
+}
+.card {
+  text-align: center;
+  padding: 15px;
+}
+.card-vote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.parrafo {
+  position: absolute;
+  color: white;
 }

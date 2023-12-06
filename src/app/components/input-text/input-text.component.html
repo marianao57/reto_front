@@ -5,7 +5,7 @@
 <div class="content">
   <div class="container animate__animated animate__fadeIn animate__delay-0.8s">
     <div class="center">
-      <div>
+      <div class="container-label">
         <label for="text">{{ text }}</label>
       </div>
       <div>
@@ -15,6 +15,7 @@
           type="text"
           id="text"
         />
+        <p *ngIf="message">Nombre no válido</p>
       </div>
       <div class="container-btn">
         <div>
@@ -25,7 +26,6 @@
           >
             Crear Partida
           </button>
-          <p *ngIf="message">Nombre no válido</p>
         </div>
       </div>
     </div>

@@ -11,36 +11,58 @@
       <div></div>
       <div class="container-cards">
         <div class="card">
-          <div class="prueba">
-            <p id="votePlayer0" *ngIf="displayTotalVotes()">
+          <div class="card-vote">
+            <p
+              id="votePlayer0"
+              class="voteP0 parrafo"
+              *ngIf="displayTotalVotes()"
+            >
               {{ numberAssingPlayers[0] }}
             </p>
-            <app-card id="card0"></app-card>
+            <app-card id="card0"> </app-card>
           </div>
           <p>{{ playersName[0] }}</p>
         </div>
         <div class="card">
-          <p id="votePlayer1" *ngIf="displayTotalVotes()">
-            {{ numberAssingPlayers[1] }}
-          </p>
-          <app-card id="card1"></app-card>
+          <div class="card-vote">
+            <p
+              id="votePlayer1"
+              class="voteP0 parrafo"
+              *ngIf="displayTotalVotes()"
+            >
+              {{ numberAssingPlayers[1] }}
+            </p>
+            <app-card id="card1"> </app-card>
+          </div>
           <p>{{ playersName[1] }}</p>
         </div>
         <div class="card">
-          <p id="votePlayer2" *ngIf="displayTotalVotes()">
-            {{ numberAssingPlayers[2] }}
-          </p>
-          <app-card id="card2"></app-card>
+          <div class="card-vote">
+            <p
+              id="votePlayer2"
+              class="voteP0 parrafo"
+              *ngIf="displayTotalVotes()"
+            >
+              {{ numberAssingPlayers[2] }}
+            </p>
+            <app-card id="card2"> </app-card>
+          </div>
           <p>{{ playersName[2] }}</p>
         </div>
       </div>
       <div></div>
       <div class="container-cards">
-        <p id="votePlayer3" *ngIf="displayTotalVotes()">
-          {{ numberAssingPlayers[3] }}
-        </p>
         <div class="card">
-          <app-card id="card3"></app-card>
+          <div class="card-vote">
+            <p
+              id="votePlayer3"
+              class="voteP0 parrafo"
+              *ngIf="displayTotalVotes()"
+            >
+              {{ numberAssingPlayers[3] }}
+            </p>
+            <app-card id="card3"> </app-card>
+          </div>
           <p>{{ playersName[3] }}</p>
         </div>
       </div>
@@ -49,32 +71,52 @@
       </div>
       <div class="container-cards">
         <div class="card">
-          <p id="votePlayer4" *ngIf="displayTotalVotes()">
-            {{ numberAssingPlayers[4] }}
-          </p>
-          <app-card id="card4"></app-card>
+          <div class="card-vote">
+            <p
+              id="votePlayer4"
+              class="voteP0 parrafo"
+              *ngIf="displayTotalVotes()"
+            >
+              {{ numberAssingPlayers[4] }}
+            </p>
+            <app-card id="card4"> </app-card>
+          </div>
           <p>{{ playersName[4] }}</p>
         </div>
       </div>
       <div></div>
       <div class="container-cards">
         <div class="card">
-          <p id="votePlayer5" *ngIf="displayTotalVotes()">
-            {{ numberAssingPlayers[5] }}
-          </p>
-          <app-card id="card5"></app-card>
+          <div class="card-vote">
+            <p
+              id="votePlayer5"
+              class="voteP0 parrafo"
+              *ngIf="displayTotalVotes()"
+            >
+              {{ numberAssingPlayers[5] }}
+            </p>
+            <app-card id="card5"> </app-card>
+          </div>
           <p>{{ playersName[5] }}</p>
         </div>
         <div class="card main-player">
-          <app-icon-player></app-icon-player>
-          <app-player-name></app-player-name>
-          <p id="votePlayer7">{{ numberMainPlayer }}</p>
+          <div>
+            <p id="votePlayer7">{{ numberMainPlayer }}</p>
+            <app-icon-player></app-icon-player>
+            <app-player-name></app-player-name>
+          </div>
         </div>
         <div class="card">
-          <p id="votePlayer6" *ngIf="displayTotalVotes()">
-            {{ numberAssingPlayers[6] }}
-          </p>
-          <app-card id="card6"></app-card>
+          <div class="card-vote">
+            <p
+              id="votePlayer6"
+              class="voteP0 parrafo"
+              *ngIf="displayTotalVotes()"
+            >
+              {{ numberAssingPlayers[6] }}
+            </p>
+            <app-card id="card6"> </app-card>
+          </div>
           <p>{{ playersName[6] }}</p>
         </div>
       </div>

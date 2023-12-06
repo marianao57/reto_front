@@ -1,19 +1,15 @@
 <div id="containerTotalVotes" class="grid-cards-numbers">
   <div *ngFor="let i of size">
     <div class="item">
-      <div class="vote">
-        <p id="cardVote{{ i }}">{{ selectedCards[i] }}</p>
+      <div class="container-votes">
+        <div class="card">
+          <p class="parrafo" id="cardVote{{ i }}">{{ selectedCards[i] }}</p>
+          <app-card></app-card>
+        </div>
+        <div class="voto">
+          <p id="voteIndividual{{ i }}">{{ votes[i] }}</p>
+        </div>
       </div>
-      <div class="votes-container">
-        <div class="container-votes">
-          <div class="card">
-            <app-card></app-card>
-          </div>
-          <div>
-            <p id="voteIndividual{{ i }}">{{ votes[i] }}</p>
-          </div>
-        </div>
-        </div>
     </div>
   </div>
   <div class="average">

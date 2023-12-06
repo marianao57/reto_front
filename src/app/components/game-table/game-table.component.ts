@@ -35,19 +35,21 @@ export class GameTableComponent {
       this.countVotes.getNumber(position);
       this.numberMainPlayer = this.countVotes.numberMainPlayer;
       this.displayComponents.showMainNumber(this.numberMainPlayer);
+      this.displayComponents.showTotalVotes();
     }
     this.countVotes.startCount = true;
     this.startCount = this.countVotes.startCount;
     this.countVotes.getNumber(position);
     this.numberMainPlayer = this.countVotes.numberMainPlayer;
     this.average = this.countVotes.average();
-    this.displayComponents.changeStyleCards()
+    this.displayComponents.changeStyleCards();
   }
 
   changeStyleCards(i: number): void {
     let div = document.getElementById('card_number' + i);
     let text = document.getElementById('number' + i);
     if (div && text) {
+      div.style.transition = 'all 0.8s ease';
       div.style.backgroundColor = '#e4a4ff';
       div.style.borderRadius = '7px';
       div.style.width = '35px';
@@ -68,5 +70,4 @@ export class GameTableComponent {
   displayTotalVotes(): boolean {
     return this.displayComponents.totalVotes;
   }
-
 }

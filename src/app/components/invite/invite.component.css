@@ -32,6 +32,8 @@
   color: #330072;
   font-weight: bold;
   margin: 20px;
+  transition: all 0.5s ease; 
+
 }
 .btn:hover {
   transform: scale(1.2);
