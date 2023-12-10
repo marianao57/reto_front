@@ -26,8 +26,8 @@ describe('PlayerNameComponent', () => {
   });
 
   it('debe retornar el nombre del jugador', () => {
-    const playerName: any = 'Mariana';
-    const mockData: any = { player_name: playerName };
+    const playerName = 'Mariana';
+    const mockData = { player_name: playerName };
     manageLocalStorageService.saveLocalStorage('player_name', playerName);
 
     spyOn<any>(manageLocalStorageService, 'data').and.returnValue(mockData);

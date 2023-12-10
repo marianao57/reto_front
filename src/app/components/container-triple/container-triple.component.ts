@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CountVotesService } from 'src/app/services/count-votes.service';
 import { DisplayComponentsService } from 'src/app/services/display-components.service';
 
@@ -7,9 +7,9 @@ import { DisplayComponentsService } from 'src/app/services/display-components.se
   templateUrl: './container-triple.component.html',
   styleUrls: ['./container-triple.component.css'],
 })
-export class ContainerTripleComponent {
+export class ContainerTripleComponent implements OnInit {
   displayLoader: boolean | undefined = false;
-  n: any | undefined = this.countVotes.numberMainPlayer;
+  n = this.countVotes.numberMainPlayer;
   displayButtonCount: boolean | undefined = false;
   displayButtonReset: boolean | undefined = false;
   resetAux: boolean | undefined = false;
@@ -43,7 +43,7 @@ export class ContainerTripleComponent {
       this.displayButtonResetFunction();
       return false;
     }
-    let n = this.countVotes.numberMainPlayer;
+    const n = this.countVotes.numberMainPlayer;
     if (n && !this.displayLoader && !this.displayButtonReset) {
       this.displayButtonCount = true;
       return true;
@@ -65,7 +65,7 @@ export class ContainerTripleComponent {
   }
 
   displayButtonResetFunction(): boolean {
-    let n = this.countVotes.numberMainPlayer;
+    const n = this.countVotes.numberMainPlayer;
     if (this.resetAux) {
       this.displayButtonReset = false;
       this.countVotes.reset = false;
@@ -81,7 +81,7 @@ export class ContainerTripleComponent {
   }
 
   displayTotalVotes(): void {
-    let div = document.getElementById('containerTotalVotes');
+    const div = document.getElementById('containerTotalVotes');
     if (div) {
       div.style.visibility = 'visible';
     }

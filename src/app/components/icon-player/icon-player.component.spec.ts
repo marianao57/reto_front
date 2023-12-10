@@ -26,7 +26,7 @@ describe('IconPlayerComponent', () => {
   });
 
   it('Debería retornar "NN" si no hay nombre de jugador', () => {
-    const mockData: any = { player_name: undefined }; // Simula que no hay nombre de jugador
+    const mockData = { player_name: undefined }; // Simula que no hay nombre de jugador
 
     // Simula el comportamiento de manageLocalStorageService.data
     spyOn<any>(manageLocalStorageService, 'data').and.returnValue(mockData);
@@ -37,8 +37,8 @@ describe('IconPlayerComponent', () => {
   });
 
   it('Retorna las dos primeras letras del nombre del jugador', () => {
-    const playerName: any = 'Mariana';
-    const mockData: any = { player_name: playerName };
+    const playerName = 'Mariana';
+    const mockData = { player_name: playerName };
     manageLocalStorageService.saveLocalStorage('player_name', playerName);
 
     spyOn<any>(manageLocalStorageService, 'data').and.returnValue(mockData);

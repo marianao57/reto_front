@@ -5,23 +5,23 @@ import { PlayersService } from './players.service';
   providedIn: 'root',
 })
 export class CountVotesService {
-  playersName: Array<String> = this.players.players;
-  numbers: Array<Number> = this.players.numbers;
-  numberAssingPlayers: Array<Number> = [];
+  playersName: any = this.players.players;
+  numbers: any = this.players.numbers;
+  numberAssingPlayers: any = [];
   numberMainPlayer: any;
-  selectedCard: Array<Number> = [];
-  voteIndividual: Array<Number> = [];
-  votes: Array<Number> = [];
-  text: string = '';
-  displayLoader: string = 'none';
-  displayVotes: string = 'none';
-  startCount: boolean = false;
-  reset: boolean = false;
+  selectedCard: any = [];
+  voteIndividual: any = [];
+  votes: any = [];
+  text: any = '';
+  displayLoader: any = 'none';
+  displayVotes: any = 'none';
+  startCount: any = false;
+  reset: any = false;
 
   constructor(private players: PlayersService) {}
 
   getNumber(position: number): void {
-    let n = Number(this.numbers[position]);
+    const n = Number(this.numbers[position]);
     this.numberMainPlayer = n;
   }
 
@@ -51,10 +51,10 @@ export class CountVotesService {
 
   definitiveCards(): void {
     let cards = [];
-    let votes: any[] = [];
+    const votes: any[] = [];
     let index = 0;
     cards = this.selectedCard.reduce(
-      (accumulator: Array<Number>, currentValue: Number) => {
+      (accumulator: Array<number>, currentValue: number) => {
         if (!accumulator.includes(currentValue)) {
           index = this.selectedCard.indexOf(currentValue);
           accumulator.push(currentValue);
@@ -68,11 +68,10 @@ export class CountVotesService {
     this.votes = votes;
   }
 
-  average(): any {
+  average(): string {
     this.countVotes();
     let accumulator = 0;
     let lessCards = 0;
-    let averageTotal;
     for (let i = 0; i < this.selectedCard.length; i++) {
       if (!this.selectedCard[i]) {
         lessCards++;
@@ -80,7 +79,8 @@ export class CountVotesService {
       }
       accumulator += this.selectedCard[i].valueOf();
     }
-    averageTotal = accumulator / (Number(this.selectedCard.length) - lessCards);
+    const averageTotal =
+      accumulator / (Number(this.selectedCard.length) - lessCards);
     return averageTotal.toFixed(2);
   }
 
@@ -100,7 +100,7 @@ export class CountVotesService {
 
   changeDisplayVotes(conditional: boolean): void {
     for (let i = 0; i < this.numberAssingPlayers.length; i++) {
-      let p = document.getElementById('votes' + i);
+      const p = document.getElementById('votes' + i);
       if (p && conditional) {
         p.style.display = 'block';
       } else if (p && !conditional) {
@@ -110,7 +110,7 @@ export class CountVotesService {
   }
 
   changeDisplayOptions(condition: boolean): void {
-    let div = document.getElementById('options');
+    const div = document.getElementById('options');
     if (div) {
       if (condition) {
         div.style.display = 'flex';

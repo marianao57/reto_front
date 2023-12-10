@@ -43,7 +43,7 @@ describe('InviteComponent', () => {
   });
 
   it('debería copiar el contenido al portapapeles', () => {
-    const mockLink: any = 'https://example.com';
+    const mockLink = 'https://example.com';
     spyOn<any>(document, 'getElementById').and.returnValue({
       innerText: mockLink,
     });

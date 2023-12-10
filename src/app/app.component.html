@@ -9,7 +9,7 @@
   <body>
     <div class="content">
       <div class="container">
-        <initial-logo class="initial" *ngIf="initial"></initial-logo>
+        <app-initial-logo class="initial" *ngIf="initial"></app-initial-logo>
         <app-input-text *ngIf="displayCreateGame"></app-input-text>
         <app-input-player *ngIf="setDisplayInputPlayer('game_name')"></app-input-player>
         <app-game-table *ngIf="setDisplayGame()"></app-game-table>

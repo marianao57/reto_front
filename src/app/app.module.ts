@@ -18,6 +18,7 @@ import { VotesComponent } from './components/votes/votes.component';
 import { InviteComponent } from './components/invite/invite.component';
 import { MatCardModule } from '@angular/material/card';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,4 @@ import { MatCardModule } from '@angular/material/card';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-  ngOnInit() {}
-}
+export class AppModule {}

@@ -35,8 +35,8 @@ describe('HeaderComponent', () => {
   });
 
   it('Debe retornar el nombre del juego guardado en el servicio ManageLocalStorage', () => {
-    const gameName: any = 'prueba';
-    const mockData: any = { game_name: gameName };
+    const gameName = 'prueba';
+    const mockData = { game_name: gameName };
     manageLocalStorage.saveLocalStorage('game_name', gameName);
 
     spyOn(manageLocalStorage, 'data').and.returnValue(mockData);

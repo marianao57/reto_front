@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class InviteComponent {
   link: any = document.getElementById('link')?.innerText;
-  displayInvite: string = 'none';
+  displayInvite = 'none';
 
   copy(): void {
     this.link = document.getElementById('link')?.innerText;
@@ -21,8 +21,8 @@ export class InviteComponent {
     );
   }
   close(): void {
-    let game = document.getElementById('container-game');
-    let invite = document.getElementById('invite');
+    const game = document.getElementById('container-game');
+    const invite = document.getElementById('invite');
     if (game && invite) {
       game.style.zIndex = '0';
       invite.style.display = 'none';

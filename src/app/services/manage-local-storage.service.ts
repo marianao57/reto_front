@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ManageLocalStorageService {
   data: { [key: string]: any } = { };
-  constructor() {}
+
 
   saveLocalStorage(key: string, value: string): void {
     localStorage.setItem(key, value);
@@ -13,7 +13,7 @@ export class ManageLocalStorageService {
   }
 
   getData(key: string): string {
-    let name = this.data[key];
+    const name = this.data[key];
     return name;
   }
 }

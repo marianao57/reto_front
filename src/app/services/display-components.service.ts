@@ -5,10 +5,10 @@ import { CountVotesService } from './count-votes.service';
   providedIn: 'root',
 })
 export class DisplayComponentsService {
-  totalVotes: boolean = false;
-  buttonCountVotes: boolean = false;
-  votesPlayers: boolean = false;
-  invite: boolean = false;
+  totalVotes = false;
+  buttonCountVotes = false;
+  votesPlayers = false;
+  invite = false;
   reset: boolean = this.countService.reset;
 
   constructor(private countService: CountVotesService) {}
@@ -23,7 +23,7 @@ export class DisplayComponentsService {
 
   resetVotesPlayers(): void {
     for (let i = 0; i < 8; i++) {
-      let vote = document.getElementById('votePlayer' + i);
+      const vote = document.getElementById('votePlayer' + i);
       if (vote) {
         vote.textContent = '';
       }
@@ -31,14 +31,14 @@ export class DisplayComponentsService {
   }
 
   resetVotesTotales(): void {
-    let votes = document.getElementById('totalVotes');
+    const votes = document.getElementById('totalVotes');
     if (votes) {
       votes.style.visibility = 'hidden';
     }
   }
 
   resetOptions(): void {
-    let options = document.getElementById('options');
+    const options = document.getElementById('options');
     if (options) {
       options.style.display = 'flex';
     }
@@ -46,8 +46,8 @@ export class DisplayComponentsService {
 
   showTotalVotes(): void {
     for (let i = 0; i < this.countService.selectedCard.length; i++) {
-      let card: any = document.getElementById('cardVote' + i);
-      let vote: any = document.getElementById('voteIndividual' + i);
+      const card: any = document.getElementById('cardVote' + i);
+      const vote: any = document.getElementById('voteIndividual' + i);
       if (card && vote) {
         card.textContent = this.countService.selectedCard[i];
         vote.textContent = this.countService.votes[i];
@@ -58,7 +58,7 @@ export class DisplayComponentsService {
   
   showIndividualVotes():void{
     for (let i = 0; i < this.countService.numberAssingPlayers.length; i++) {
-      let voteIndividual: any = document.getElementById('votePlayer' + i);
+      const voteIndividual: any = document.getElementById('votePlayer' + i);
       if (voteIndividual) {
         voteIndividual.textContent = this.countService.numberAssingPlayers[i];
       }
@@ -66,7 +66,7 @@ export class DisplayComponentsService {
   }
 
   showMainNumber(numberMain: any): void {
-    let number = document.getElementById('votePlayer7');
+    const number = document.getElementById('votePlayer7');
     if (number) {
       number.textContent = numberMain;
     }
@@ -74,7 +74,7 @@ export class DisplayComponentsService {
 
   changeStyleCards(): void {
     for (let i = 0; i < 8; i++) {
-      let card = document.getElementById('card' + i);
+      const card = document.getElementById('card' + i);
       if (card) {
         card.style.transition = 'all 0.5s ease';
         card.style.backgroundColor = '#e4a4ff';
@@ -88,7 +88,7 @@ export class DisplayComponentsService {
 
   styleCardsInitial(): void {
     for (let i = 0; i < 8; i++) {
-      let card = document.getElementById('card' + i);
+      const card = document.getElementById('card' + i);
       if (card) {
         card.style.transition = 'all 0.5s ease';
         card.style.backgroundColor = 'transparent';
@@ -102,8 +102,8 @@ export class DisplayComponentsService {
 
   initialStyle(): void {
     for (let i = 0; i < 8; i++) {
-      let div = document.getElementById('card_number' + i);
-      let text = document.getElementById('number' + i);
+      const div = document.getElementById('card_number' + i);
+      const text = document.getElementById('number' + i);
       if (div && text) {
         div.style.backgroundColor = 'transparent';
         text.style.color = 'white';

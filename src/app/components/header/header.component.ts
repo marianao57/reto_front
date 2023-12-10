@@ -11,12 +11,12 @@ export class HeaderComponent {
   constructor(private manageLocalStorage: ManageLocalStorageService) {}
 
   execute(): string {
-    let name = this.manageLocalStorage.data['game_name'];
+    const name = this.manageLocalStorage.data['game_name'];
     return name;
   }
 
   invite(): void {
-    let div = document.getElementById('invite');
+    const div = document.getElementById('invite');
     if (div) {
       div.style.display = 'block';
     }

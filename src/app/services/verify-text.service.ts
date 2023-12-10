@@ -4,13 +4,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class VerifyTextService {
-  displayUser: string = 'none';
-  displayCreate: string = 'block';
+  displayUser = 'none';
+  displayCreate = 'block';
 
   /* method to check if the name entered meets the requirements, 
   returns 1 if it meets and 0 if it does not meet */
   verifyNameGame(name: string): number {
-    
     if (
       this.checkSpecialCharacters(name) &&
       this.checkSize(name) &&
@@ -42,5 +41,4 @@ export class VerifyTextService {
     const numbersFound = name.match(/\d/g);
     return numbersFound ? numbersFound.length : 0;
   }
-  constructor() {}
 }

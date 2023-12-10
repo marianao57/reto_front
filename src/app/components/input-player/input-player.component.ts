@@ -8,9 +8,9 @@ import { ManageLocalStorageService } from '../../services/manage-local-storage.s
   styleUrls: ['./input-player.component.css'],
 })
 export class InputPlayerComponent {
-  userName: string = '';
-  display: boolean = true;
-  displayMessage: boolean = false;
+  userName = '';
+  display = true;
+  displayMessage = false;
   constructor(
     private VerifyTextService: VerifyTextService,
     private manageLocalStorage: ManageLocalStorageService
@@ -18,7 +18,7 @@ export class InputPlayerComponent {
 
   /* method to verify that the username complies and change the display of the components */
   execute(): void {
-    let result: number = this.VerifyTextService.verifyNameGame(this.userName);
+    const result = this.VerifyTextService.verifyNameGame(this.userName);
     if (result == 1) {
       this.manageLocalStorage.saveLocalStorage('player_name', this.userName);
       this.display = false;

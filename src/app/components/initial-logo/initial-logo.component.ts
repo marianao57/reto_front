@@ -1,11 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'initial-logo',
+  selector: 'app-initial-logo',
   templateUrl: './initial-logo.component.html',
   styleUrls: ['./initial-logo.component.css'],
 })
-export class InitialLogoComponent {
-  
-  ngOnInit() {}
-}
+export class InitialLogoComponent {}

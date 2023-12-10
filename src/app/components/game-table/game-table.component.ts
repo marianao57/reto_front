@@ -10,14 +10,14 @@ import { DisplayComponentsService } from 'src/app/services/display-components.se
   styleUrls: ['./game-table.component.css'],
 })
 export class GameTableComponent {
-  playersName: Array<String> = this.players.players;
-  numbers: Array<Number> = this.players.numbers;
-  numberAssingPlayers: Array<Number> = this.countVotes.numberAssingPlayers;
+  playersName: Array<string> = this.players.players;
+  numbers = this.players.numbers;
+  numberAssingPlayers = this.countVotes.numberAssingPlayers;
   numberMainPlayer: any;
-  selectedCard: Array<Number> = this.countVotes.numberAssingPlayers;
-  votes: Array<Number> = this.countVotes.votes;
-  displayGameTable: boolean = true;
-  average: number = 0;
+  selectedCard = this.countVotes.numberAssingPlayers;
+  votes = this.countVotes.votes;
+  displayGameTable = true;
+  average:any = 0;
   startCount: boolean = this.countVotes.startCount;
 
   constructor(
@@ -26,8 +26,6 @@ export class GameTableComponent {
     public countVotes: CountVotesService,
     public displayComponents: DisplayComponentsService
   ) {}
-
-  ngOnInit() {}
 
   getNumberMain(position: number): void {
     if (this.countVotes.reset) {
@@ -46,8 +44,8 @@ export class GameTableComponent {
   }
 
   changeStyleCards(i: number): void {
-    let div = document.getElementById('card_number' + i);
-    let text = document.getElementById('number' + i);
+    const div = document.getElementById('card_number' + i);
+    const text = document.getElementById('number' + i);
     if (div && text) {
       div.style.transition = 'all 0.8s ease';
       div.style.backgroundColor = '#e4a4ff';

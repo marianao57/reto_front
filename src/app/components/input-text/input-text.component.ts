@@ -8,12 +8,11 @@ import { ManageLocalStorageService } from '../../services/manage-local-storage.s
   styleUrls: ['./input-text.component.css'],
 })
 export class InputTextComponent {
-  text: string = 'Nombra la partida';
-  display: boolean = true;
-  message: boolean = false;
-  inputValue: string = '';
-  ls: any;
-  inputEscribiendo: boolean = false; // Inicialmente deshabilitado
+  text = 'Nombra la partida';
+  display = true;
+  message = false;
+  inputValue = '';
+  inputEscribiendo = false; // Inicialmente deshabilitado
 
   constructor(
     private verifyText: VerifyTextService,
@@ -21,10 +20,10 @@ export class InputTextComponent {
   ) {}
 
   execute(): void {
-    let result: number = this.verifyText.verifyNameGame(this.inputValue);
+    const result = this.verifyText.verifyNameGame(this.inputValue);
     if (result == 1) {
       this.manageLocalStorage.saveLocalStorage('game_name', this.inputValue);
-      this.display = false
+      this.display = false;
     } else {
       this.message = true;
     }

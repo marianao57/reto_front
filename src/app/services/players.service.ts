@@ -20,10 +20,10 @@ export class PlayersService {
 
   constructor(private manageLocalStorage: ManageLocalStorageService) {}
 
-  fillArrayNumbers(): Array<Number> {
-    let numbers: Array<number> = [];
+  fillArrayNumbers(): Array<number> {
+    const numbers: Array<number> = [];
     for (let i = 0; i < 9; i++) {
-      let numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+      const numeroAleatorio = Math.floor(Math.random() * 100) + 1;
       if (numbers.includes(numeroAleatorio)) {
         i = i - 1;
       } else {
